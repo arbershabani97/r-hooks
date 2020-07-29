@@ -2,6 +2,7 @@ import debounce from 'lodash.debounce'
 import { useCallback, useState } from 'react'
 
 export const useAPI = ({ apiFn, debounceTime = 300, reset }) => {
+  const [results, setResults] = useState()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -10,10 +11,12 @@ export const useAPI = ({ apiFn, debounceTime = 300, reset }) => {
     debounce(async (data) => {
       try {
         setLoading(true)
-        await apiFn(data)
+        const {data:res} = await apiFn(data)
+        setResults(res)
         setLoading(false)
         reset()
       } catch (error_) {
+        setResults(null)
         setError(error_?.response || 'No Internet Connection!')
         setLoading(false)
       }
@@ -23,6 +26,7 @@ export const useAPI = ({ apiFn, debounceTime = 300, reset }) => {
 
   return {
     onSubmit,
+    results,
     apiError: error,
     loading
   }
