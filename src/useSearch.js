@@ -8,10 +8,10 @@ export const useSearch = ({ apiFn, debounceTime = 700 }) => {
   const [loading, setLoading] = useState(false)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const submitSearch = useCallback(
+  const handleSearch = useCallback(
     debounce(async (params) => {
       try {
-        if (!search) {
+        if (!searchValue) {
           setResults([])
           return
         }
@@ -24,18 +24,16 @@ export const useSearch = ({ apiFn, debounceTime = 700 }) => {
         setLoading(false)
       }
     }, debounceTime),
-    []
+    [searchValue]
   )
 
-  const handleChange = (e, params) => {
-    setSearchValue(e.target.value)
-    submitSearch(params);
-  }
+  const handleChange = (e) => setSearchValue(e.target.value)
 
   return {
     searchValue,
     results,
     handleChange,
+    handleSearch,
     apiError: error,
     loading
   }
