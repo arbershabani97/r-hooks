@@ -27,13 +27,15 @@ export const useSearch = ({ apiFn, debounceTime = 700 }) => {
     []
   )
 
-  const handleChange = (e) => setSearchValue(e.target.value)
+  const handleChange = (e, params) => {
+    setSearchValue(e.target.value)
+    submitSearch(params);
+  }
 
   return {
     searchValue,
     results,
     handleChange,
-    handleSearch:submitSearch,
     apiError: error,
     loading
   }
