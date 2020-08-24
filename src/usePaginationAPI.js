@@ -18,7 +18,7 @@ const getSelectedAttributes = (response, data) => {
   })
   return result
 }
-const getPagination = (response, loaded = []) => {
+const getPagination = (response, loaded = [], reset = false) => {
   const currentPage = getSelectedAttributes(
     response,
     paginationResponse.currentPage
@@ -30,7 +30,7 @@ const getPagination = (response, loaded = []) => {
     last: lastPage,
     perPage: perPage,
     hasMore: lastPage > currentPage,
-    loaded: uniq([...loaded, currentPage])
+    loaded: reset ? [currentPage] : uniq([...loaded, currentPage])
   }
 }
 
@@ -53,19 +53,12 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500 }) => {
     debounce(async (data, reset) => {
       try {
         setLoading(true)
-        if (reset) {
-          const { data: res } = await apiFn(data, reset)
+        if (pages.loaded.includes(data.page) && !reset) return
+        const { data: res } = await apiFn(data)
 
-          const _pages = getPagination(res)
-          setPages(_pages)
-          setResponse(res)
-        } else if (!pages.loaded.includes(data.page)) {
-          const { data: res } = await apiFn(data)
-
-          const _pages = getPagination(res, pages.loaded)
-          setPages(_pages)
-          setResponse(res)
-        }
+        const _pages = getPagination(res, pages.loaded, reset)
+        setPages(_pages)
+        setResponse(res)
       } catch (error_) {
         setError(error_?.response || 'No Internet Connection!')
       } finally {
