@@ -1,6 +1,6 @@
 import { useAPI } from './useAPI'
 import { useFetchAPI } from './useFetchAPI'
-import { useFilterPaginationAPI } from './useFilterPaginationAPI'
+import { usePaginationAPI } from './usePaginationAPI'
 import { useSearch } from './useSearch'
 
-export { useAPI, useFetchAPI, useFilterPaginationAPI, useSearch }
+export { useAPI, useFetchAPI, usePaginationAPI, useSearch }
