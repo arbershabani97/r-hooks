@@ -72,17 +72,6 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500 }) => {
     response,
     apiError: error,
     pages,
-    loading,
-    resetPages: useCallback(
-      () =>
-        setPages({
-          current: 0,
-          last: 0,
-          loaded: [],
-          perPage: 0,
-          hasMore: false
-        }),
-      []
-    )
+    loading
   }
 }
