@@ -26,9 +26,9 @@ const getPagination = (response, loaded = [], reset = false) => {
   const lastPage = getSelectedAttributes(response, paginationResponse.lastPage)
   const perPage = getSelectedAttributes(response, paginationResponse.perPage)
   return {
-    current: currentPage,
-    last: lastPage,
-    perPage: perPage,
+    current: currentPage || 1,
+    last: lastPage || 1,
+    perPage: perPage || 20,
     hasMore: lastPage > currentPage,
     loaded: reset ? [currentPage] : uniq([...loaded, currentPage])
   }
