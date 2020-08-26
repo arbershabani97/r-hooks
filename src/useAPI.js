@@ -11,7 +11,7 @@ export const useAPI = ({ apiFn, debounceTime = 300, reset }) => {
     debounce(async (data) => {
       try {
         setLoading(true)
-        const {data:res} = await apiFn(data)
+        const { data: res } = await apiFn(data)
         setResults(res)
         setLoading(false)
         reset()

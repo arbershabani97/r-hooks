@@ -1,5 +1,8 @@
 export const useCache = ({ fn, limit = 30, sortFn, sort = ['id'] }) => {
   const cache = (data, event) => {
+    if (!Array.isArray(data)) {
+      data = [data]
+    }
     if (data.length) {
       if (sortFn) {
         data.sort(sortFn)
@@ -10,7 +13,7 @@ export const useCache = ({ fn, limit = 30, sortFn, sort = ['id'] }) => {
         })
       }
     }
-    fn({ data: data.map((item) => item.id), limit, event })
+    fn({ data: data.map((item) => (item?.id ? item.id : item)), limit, event })
   }
 
   return cache

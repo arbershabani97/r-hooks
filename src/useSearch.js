@@ -28,9 +28,9 @@ export const useSearch = ({ apiFn, debounceTime = 700 }) => {
   )
 
   const handleChange = (e, params) => {
-    const {value} = e.target;
-    setSearchValue(value);
-    handleSearch(value, params);
+    const { value } = e.target
+    setSearchValue(value)
+    handleSearch(value, params)
   }
 
   return {
