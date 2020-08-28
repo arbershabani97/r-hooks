@@ -1,6 +1,6 @@
 {
   "name": "shabi-hooks",
-  "version": "1.1.5-beta",
+  "version": "1.1.6",
   "description": "Hooks to simplify code!",
   "author": "arbershabani97",
   "license": "MIT",
@@ -24,8 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",
