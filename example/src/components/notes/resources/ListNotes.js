@@ -6,17 +6,13 @@ import { connect } from 'react-redux'
 import Note from '../_Note'
 import { getNotes } from '../../../store/components/notes/notes.API'
 import { selectNotes } from '../../../store/components/notes/notes.selector'
-import { useFilterPaginationAPI } from 'shabi-hooks'
+import { useFilterPaginationAPI } from 'r-hooks'
 
 const ListNotes = ({ notes, onToggle }) => {
   // eslint-disable-next-line no-unused-vars
   const {
     handleFetch,
-    results,
-    loading,
-    apiError,
     currentPage,
-    loadedPages
   } = useFilterPaginationAPI({ apiFn: getNotes })
 
   useEffect(() => {

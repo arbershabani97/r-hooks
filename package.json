@@ -1,10 +1,10 @@
 {
-  "name": "shabi-hooks",
-  "version": "1.1.5-beta",
+  "name": "r-hooks",
+  "version": "1.1.51",
   "description": "Hooks to simplify code!",
   "author": "arbershabani97",
   "license": "MIT",
-  "repository": "arbershabani97/shabi-hooks",
+  "repository": "arbershabani97/r-hooks",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -24,8 +24,7 @@
     "deploy": "gh-pages -d example/build"
   },
   "peerDependencies": {
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0"
+    "react": "^16.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.3",

@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { getProject } from '../../../store/components/project/project.API'
 import { selectProject } from '../../../store/components/project/project.selector'
-import { useFetchAPI } from 'shabi-hooks'
+import { useFetchAPI } from 'r-hooks'
 
 const ShowProject = ({ project }) => {
   const { id, title, userId, body } = project

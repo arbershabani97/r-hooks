@@ -4,7 +4,7 @@ import React from 'react'
 
 import Project from '../_Project'
 import { searchProjects } from '../../../store/components/projects/projects.API'
-import { useSearch } from 'shabi-hooks'
+import { useSearch } from 'r-hooks'
 
 const _SearchProjects = ({ onToggle }) => {
   // eslint-disable-next-line no-unused-vars

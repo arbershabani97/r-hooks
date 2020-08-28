@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 import { selectProject } from '../../../store/components/project/project.selector'
 import { putProject } from '../../../store/components/projects/projects.API'
-import { useAPI } from 'shabi-hooks'
+import { useAPI } from 'r-hooks'
 import Input from '../../shared/Input'
 
 const EditProject = ({ project }) => {

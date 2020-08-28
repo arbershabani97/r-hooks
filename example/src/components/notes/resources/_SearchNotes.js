@@ -4,7 +4,7 @@ import React from 'react'
 
 import Note from '../_Note'
 import { searchNotes } from '../../../store/components/notes/notes.API'
-import { useSearch } from 'shabi-hooks'
+import { useSearch } from 'r-hooks'
 
 const _SearchNotes = ({ onToggle }) => {
   // eslint-disable-next-line no-unused-vars

@@ -6,17 +6,13 @@ import { connect } from 'react-redux'
 import Project from '../_Project'
 import { getProjects } from '../../../store/components/projects/projects.API'
 import { selectProjects } from '../../../store/components/projects/projects.selector'
-import { useFilterPaginationAPI } from 'shabi-hooks'
+import { useFilterPaginationAPI } from 'r-hooks'
 
 const ListProjects = ({ projects, onToggle }) => {
   // eslint-disable-next-line no-unused-vars
   const {
     handleFetch,
-    results,
-    loading,
-    apiError,
     currentPage,
-    loadedPages
   } = useFilterPaginationAPI({ apiFn: getProjects })
 
   useEffect(() => {

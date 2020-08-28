@@ -1,13 +1,13 @@
-# shabi-hooks
+# r-hooks
 
 > Helper Hooks to simplify code!
 
-[![NPM](https://img.shields.io/npm/v/shabi-hooks.svg)](https://www.npmjs.com/package/shabi-hooks) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![NPM](https://img.shields.io/npm/v/r-hooks.svg)](https://www.npmjs.com/package/r-hooks) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save shabi-hooks
+npm install --save r-hooks
 ```
 
 ## Usage
@@ -15,8 +15,8 @@ npm install --save shabi-hooks
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'shabi-hooks'
-import 'shabi-hooks/dist/index.css'
+import MyComponent from 'r-hooks'
+import 'r-hooks/dist/index.css'
 
 class Example extends Component {
   render() {

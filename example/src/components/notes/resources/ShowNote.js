@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 
 import { getNote } from '../../../store/components/note/note.API'
 import { selectNote } from '../../../store/components/note/note.selector'
-import { useFetchAPI } from 'shabi-hooks'
+import { useFetchAPI } from 'r-hooks'
 
 const ShowNote = ({ note }) => {
   const { id, title, userId, body } = note

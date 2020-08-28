@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 import { selectNote } from '../../../store/components/note/note.selector'
 import { putNote } from '../../../store/components/notes/notes.API'
-import { useAPI } from 'shabi-hooks'
+import { useAPI } from 'r-hooks'
 import Input from '../../shared/Input'
 
 const EditNote = ({ note }) => {

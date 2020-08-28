@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 
 import { selectNote } from '../../../store/components/note/note.selector'
 import { deleteNote } from '../../../store/components/notes/notes.API'
-import { useAPI } from 'shabi-hooks'
+import { useAPI } from 'r-hooks'
 
 const DeleteNote = ({ note }) => {
   const { id, title, userId } = note

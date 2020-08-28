@@ -4,7 +4,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import { postNote } from '../../../store/components/notes/notes.API'
-import { useAPI } from 'shabi-hooks'
+import { useAPI } from 'r-hooks'
 import Input from '../../shared/Input'
 
 const CreateNote = () => {
