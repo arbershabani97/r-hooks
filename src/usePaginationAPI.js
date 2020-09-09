@@ -57,6 +57,7 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500 }) => {
         const { data: res } = await apiFn(data)
 
         const _pages = getPagination(res, pages.loaded, reset)
+        setError(false)
         setPages(_pages)
         setResponse(res)
       } catch (error_) {
