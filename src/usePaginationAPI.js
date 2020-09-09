@@ -64,7 +64,10 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500 }) => {
         if (error_?.response?.status === 304) {
           setPages((_pages) => ({
             ..._pages,
-            loaded: [data.page, ..._pages.loaded]
+            perPage: data?.perPage || 20,
+            current: data.page,
+            loaded: [data.page, ..._pages.loaded],
+            hasMore: true
           }))
         }
         setError(error_?.response || 'No Internet Connection!')
