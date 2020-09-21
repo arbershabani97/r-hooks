@@ -34,7 +34,7 @@ const getPagination = (response, loaded = [], reset = false) => {
   }
 }
 
-export const usePaginationAPI = ({ apiFn, debounceTime = 500 }) => {
+export const usePaginationAPI = ({ apiFn, debounceTime = 500, logger }) => {
   const [pages, setPages] = useState({
     current: 0,
     last: 0,
@@ -54,7 +54,21 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500 }) => {
       try {
         setLoading(true)
         if (pages.loaded.includes(data.page) && !reset) return
+        if (logger)
+          console.log(
+            `%cRequest %c${apiFn.name}`,
+            'color: orange; font-weight: bold;',
+            'color: blue; font-weight: bold;',
+            data
+          )
         const { data: res } = await apiFn(data)
+        if (logger)
+          console.log(
+            `%cSuccess %c${apiFn.name}`,
+            'color: green; font-weight: bold;',
+            'color: blue; font-weight: bold;',
+            res
+          )
 
         const _pages = getPagination(res, pages.loaded, reset)
         setError(false)
@@ -70,7 +84,17 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500 }) => {
             hasMore: true
           }))
         }
-        setError(error_?.response || 'No Internet Connection!')
+        const errorMessage = String(error_).includes('Network Error')
+          ? 'No Internet Connection!'
+          : error_?.response || error_
+        if (logger)
+          console.log(
+            `%cError %c${apiFn.name}`,
+            'color: red; font-weight: bold;',
+            'color: blue; font-weight: bold;',
+            errorMessage
+          )
+        setError(errorMessage)
       } finally {
         setLoading(false)
       }
