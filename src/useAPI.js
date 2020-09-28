@@ -2,12 +2,12 @@ import debounce from 'lodash.debounce'
 import { useCallback, useState } from 'react'
 
 export const useAPI = ({ apiFn, debounceTime = 300, reset, logger }) => {
-  const [results, setResults] = useState()
+  const [response, setResponse] = useState()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const onSubmit = useCallback(
+  const apiCall = useCallback(
     debounce(async (data) => {
       try {
         setLoading(true)
@@ -26,11 +26,11 @@ export const useAPI = ({ apiFn, debounceTime = 300, reset, logger }) => {
             'color: blue; font-weight: bold;',
             res
           )
-        setResults(res)
+        setResponse(res)
         setLoading(false)
         reset()
       } catch (error_) {
-        setResults(null)
+        setResponse(null)
         const errorMessage = String(error_).includes('Network Error')
           ? 'No Internet Connection!'
           : error_?.response || error_
@@ -49,8 +49,8 @@ export const useAPI = ({ apiFn, debounceTime = 300, reset, logger }) => {
   )
 
   return {
-    onSubmit,
-    results,
+    apiCall,
+    response,
     apiError: error,
     loading
   }

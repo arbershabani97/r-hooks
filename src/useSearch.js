@@ -3,7 +3,7 @@ import { useCallback, useState } from 'react'
 
 export const useSearch = ({ apiFn, debounceTime = 700, logger }) => {
   const [searchValue, setSearchValue] = useState('')
-  const [results, setResults] = useState([])
+  const [response, setResponse] = useState([])
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -12,7 +12,7 @@ export const useSearch = ({ apiFn, debounceTime = 700, logger }) => {
     debounce(async (value, params) => {
       try {
         if (!value) {
-          setResults([])
+          setResponse([])
           return
         }
         setLoading(true)
@@ -32,7 +32,7 @@ export const useSearch = ({ apiFn, debounceTime = 700, logger }) => {
             data
           )
         setLoading(false)
-        setResults(data)
+        setResponse(data)
       } catch (error_) {
         const errorMessage = String(error_).includes('Network Error')
           ? 'No Internet Connection!'
@@ -59,7 +59,7 @@ export const useSearch = ({ apiFn, debounceTime = 700, logger }) => {
 
   return {
     searchValue,
-    results,
+    response,
     handleChange,
     apiError: error,
     loading

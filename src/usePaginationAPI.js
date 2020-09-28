@@ -48,7 +48,7 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500, logger }) => {
   const [loading, setLoading] = useState(false)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleFetch = useCallback(
+  const apiCall = useCallback(
     // eslint-disable-next-line max-statements
     debounce(async (data, reset) => {
       try {
@@ -102,7 +102,7 @@ export const usePaginationAPI = ({ apiFn, debounceTime = 500, logger }) => {
   )
 
   return {
-    handleFetch,
+    apiCall,
     response,
     apiError: error,
     pages,

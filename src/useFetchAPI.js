@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
 export const useFetchAPI = ({ apiFn, data, logger }) => {
-  const [results, setResults] = useState()
+  const [response, setResponse] = useState()
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const handleClick = async () => {
+  const apiCall = async () => {
     try {
       setLoading(true)
       if (logger)
@@ -24,7 +24,7 @@ export const useFetchAPI = ({ apiFn, data, logger }) => {
           res
         )
       setLoading(false)
-      setResults(res)
+      setResponse(res)
     } catch (error_) {
       const errorMessage = String(error_).includes('Network Error')
         ? 'No Internet Connection!'
@@ -42,8 +42,8 @@ export const useFetchAPI = ({ apiFn, data, logger }) => {
   }
 
   return {
-    handleClick,
-    results,
+    apiCall,
+    response,
     apiError: error,
     loading
   }
